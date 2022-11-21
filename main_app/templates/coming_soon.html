@@ -3,7 +3,7 @@
 
 <h1>Movies Coming Soon</h1>
 
-{% for item in items %}
+{% for item in all_coming_soon %}
 {{ item.title }}
 <img src="{{ item.image }}" alt="" style="height: 200px; width: 100px;">
 {% endfor %}
