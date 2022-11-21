@@ -11,7 +11,19 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        </ul>
+    </nav>
     {% block content %}
+    
     {% endblock %}
 </body>
 </html>
