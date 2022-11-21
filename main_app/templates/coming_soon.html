@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Movies Coming Soon</h1>
+
+{% for item in items %}
+{{ item.title }}
+<img src="{{ item.image }}" alt="" style="height: 200px; width: 100px;">
+{% endfor %}
+
+{% endblock %}
