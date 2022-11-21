@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from main_app.models import Movie
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -15,12 +16,37 @@ def home(request):
 def top_movies(request):
     response = requests.get('https://imdb-api.com/en/API/Top250Movies/k_54v7k1ut').json()
     items = response['items']
-    return render(request, 'top_movies.html', {'items': items})
+
+    for item in items:
+        movie_data = Movie(
+            imdbId = item['id'],
+            title = item['title'],
+            year = item['year'],
+            image = item['image'],
+            # rating = item['rating']
+        )
+        movie_data.save()
+        all_top_movies = Movie.objects.all()
+
+    return render(request, 'top_movies.html', {'all_top_movies': all_top_movies})
 
 def coming_soon(request):
     response = requests.get('https://imdb-api.com/en/API/ComingSoon/k_54v7k1ut').json()
     items = response['items']
-    return render(request, 'coming_soon.html', {'items': items})
+
+    for item in items:
+        movie_data = Movie(
+            imdbId = item['id'],
+            title = item['title'],
+            year = item['year'],
+            image = item['image'],
+            genres = item['genres'],
+            # rating = item['rating']
+        )
+        movie_data.save()
+        all_coming_soon = Movie.objects.all()
+
+    return render(request, 'coming_soon.html', {'all_coming_soon': all_coming_soon})
 
 def signup(request):
     error_message = ''
