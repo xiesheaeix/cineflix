@@ -8,16 +8,34 @@ import requests
 
 
 def home(request):
+    return render(request, 'home.html' )
+
+def search(request):
     all = request.GET.get('all')
-    response = requests.get(f'https://imdb-api.com/en/API/SearchAll/k_54v7k1ut/{all}').json()
-    results = response['results']
-    return render(request, 'home.html', {'results': results})
+    if all:
+        response = requests.get(f'https://imdb-api.com/en/API/SearchAll/k_54v7k1ut/{all}').json()
+        results = response['results']
+        if results:
+            for item in results:
+                movie_data = Movie(
+                    imdbId = item['id'],
+                    title = item['title'],
+                    image = item['image'],
+                    )
+                try: 
+                    if Movie.objects.get(imdbId=item['id']):
+                        pass
+                except:
+                    movie_data.save()
+            return render(request, 'search.html', {'results': results})
 
 def top_movies(request):
     response = requests.get('https://imdb-api.com/en/API/Top250Movies/k_54v7k1ut').json()
     items = response['items']
-
+    # item_count = 0
     for item in items:
+        # item_count += 1
+        # while item_count <= 50:
         movie_data = Movie(
             imdbId = item['id'],
             title = item['title'],
@@ -25,10 +43,15 @@ def top_movies(request):
             image = item['image'],
             # rating = item['rating']
         )
-        movie_data.save()
-        all_top_movies = Movie.objects.all()
+        try: 
+            if Movie.objects.get(imdbId=item['id']):
+                pass
+        except:
+            movie_data.save()
 
     return render(request, 'top_movies.html', {'all_top_movies': items})
+        # else:
+        #     break
 
 def coming_soon(request):
     response = requests.get('https://imdb-api.com/en/API/ComingSoon/k_54v7k1ut').json()
@@ -64,3 +87,8 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
+

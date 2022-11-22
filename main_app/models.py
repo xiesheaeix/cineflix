@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 RATINGS = (
     ('1'),
@@ -26,3 +27,11 @@ class Movie(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.id})'
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.CharField(max_length=200, default='https://i.imgur.com/ANkr9YN.png')
+    bio = models.TextField()
+
+    def __str__(self):
+        return self.user.username
