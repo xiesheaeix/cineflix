@@ -15,19 +15,20 @@
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li>
-                <form action="" method="get">
-                    <input type="text" name="all">
+                <form action="{% url 'search' %}" method="GET">
+                    <input type="text" name="all" required="true">
                     <button type="submit" value="Search">Search</button>
                 </form> 
             </li>
             <li><a href="{% url 'top_movies' %}">Top Movies</a></li>
             <li><a href="{% url 'coming_soon' %}">Coming Soon</a></li>
             {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}">Profile</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
         </ul>
     </nav>
     {% block content %}

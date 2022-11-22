@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for result in results %}
+{% if result.image %}
+{{ result.title }}
+<img src="{{ result.image }}" alt="" style="height:200px; width:100px;">
+{% else %}
+
+{% endif %}
+{% endfor %}
+
+{% endblock %}
