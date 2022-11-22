@@ -28,7 +28,7 @@ def top_movies(request):
         movie_data.save()
         all_top_movies = Movie.objects.all()
 
-    return render(request, 'top_movies.html', {'all_top_movies': all_top_movies})
+    return render(request, 'top_movies.html', {'all_top_movies': items})
 
 def coming_soon(request):
     response = requests.get('https://imdb-api.com/en/API/ComingSoon/k_54v7k1ut').json()
@@ -43,10 +43,13 @@ def coming_soon(request):
             genres = item['genres'],
             # rating = item['rating']
         )
-        movie_data.save()
-        all_coming_soon = Movie.objects.all()
+        try: 
+            if Movie.objects.get(imdbId=item['id']):
+                pass
+        except:
+            movie_data.save()
 
-    return render(request, 'coming_soon.html', {'all_coming_soon': all_coming_soon})
+    return render(request, 'coming_soon.html', {'all_coming_soon': items})
 
 def signup(request):
     error_message = ''
