@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 RATINGS = (
@@ -34,4 +35,8 @@ class Profile(models.Model):
     bio = models.TextField()
 
     def __str__(self):
-        return self.user.username
+        return f'{self.user.username} ({self.id})'
+
+    def get_absolute_url(self):
+        return reverse('profile')
+
