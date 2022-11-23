@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+button[type="submit"] { 
+    position: absolute;
+    top: 20px;
+}
+
+.nav-right {
+    position: absolute;
+    left: 30rem;
+}
+
 /* home carousel */
 
 section {
