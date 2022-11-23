@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from main_app.models import Movie
 from django.contrib.auth import login
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Profile
 import requests
 
 
@@ -91,4 +93,12 @@ def signup(request):
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
+
+class create_profile(LoginRequiredMixin, CreateView):
+    model = Profile
+    fields = ['avatar', 'bio']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
