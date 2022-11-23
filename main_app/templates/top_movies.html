@@ -4,8 +4,10 @@
 <h1>Top Movies</h1>
 
 {% for item in all_top_movies %}
-{{ item.title }}
-<img src="{{ item.image }}" alt="" style="height: 200px; width: 100px;">
-{% endfor %}
+<a href="{% url 'details' item.id %}">
+    {{ item.title }}
+    <img src="{{ item.image }}" alt="" style="height: 200px; width: 100px;">
+    {% endfor %}
+</a>
 
 {% endblock %}
