@@ -76,6 +76,13 @@ def coming_soon(request):
 
     return render(request, 'coming_soon.html', {'all_coming_soon': items})
 
+
+def movie_details(request, movie_id):
+    Movie.objects.get(imdbId=movie_id)
+    response = requests.get(f'https://imdb-api.com/en/API/Title/k_54v7k1ut/{movie_id}').json()
+    vid_response = requests.get(f'https://imdb-api.com/API/Trailer/k_54v7k1ut/{movie_id}').json()
+    return render(request, 'movie/details.html', {'response': response, 'vid_response': vid_response})
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
