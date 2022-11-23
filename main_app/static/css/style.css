@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+
+section {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 6rem;
+}
+  
+.carousel-one, .carousel-two {
+    display: flex;
+    width: 200%;
+    margin-top: -5px;
+}
+
+.carousel-one {
+    animation: scrolling 50s linear infinite;
+}
+
+.carousel-two {
+    animation: scrolling 35s linear infinite;
+}
+  
+div {
+    width: 100%;
+}
+  
+ul {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+}
+  
+.movie {
+    width: 100%;
+}
+
+li img {
+    border-radius: 0.3rem;
+    margin: 5px 6px;
+    height: 180px;
+}
+  
+@keyframes scrolling {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+}
