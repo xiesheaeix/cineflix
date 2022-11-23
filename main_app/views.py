@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from main_app.models import Movie
 from django.contrib.auth import login
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -101,7 +101,7 @@ def signup(request):
 def profile(request):
     return render(request, 'users/profile.html')
 
-class create_profile(LoginRequiredMixin, CreateView):
+class CreateProfile(LoginRequiredMixin, CreateView):
     model = Profile
     fields = ['avatar', 'bio']
 
@@ -109,3 +109,7 @@ class create_profile(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class UpdateProfile(LoginRequiredMixin, UpdateView):
+    model = Profile
+    fields = ['avatar', 'bio']
+    success_url = '/profile'

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Profile Page</h1>
 
 <div class="profile">
-    <h2>This is the profile page for {{user.username}}</h2>
+    <h2>{{user.username}}</h2>
     {% if user.profile %}
     <img src="{{ user.profile.avatar }}" alt="" style="height:100px; width:100px;">
+    <a href="{% url 'update_profile' user.profile.id %}">Update Profile</a>
     {{ user.profile.bio }}
     {% else %}
     <a href="{% url 'create_profile' %}">Create Profile</a>
