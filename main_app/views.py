@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from main_app.models import Movie
 from django.contrib.auth import login
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Profile
+from .models import Profile, Favorites
 import requests
 
 
@@ -113,3 +114,27 @@ class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = ['avatar', 'bio']
     success_url = '/profile'
+
+class FavoritesList(LoginRequiredMixin, ListView):
+    model = Favorites
+
+class FavoritesCreate(LoginRequiredMixin, CreateView):
+    model = FavoritesList
+    fields = ['imdbId', 'title', 'image']
+
+class FavoritesDelete(LoginRequiredMixin, DeleteView):
+    model = Favorites
+    success_url = '/profile'
+    
+@login_required
+def assoc_favorites(request, profile_id, favorites_id):
+    Profile.objects.get(id=profile_id).favorites.add(favorites_id)
+    return redirect('profile', profile_id=profile_id)
+
+@login_required
+def unassoc_favorites(request, profile_id, favorites_id):
+    Profile.objects.get(id=profile_id).favorites.remove(favorites_id)
+    return redirect('profile', profile_id=profile_id)
+
+
+

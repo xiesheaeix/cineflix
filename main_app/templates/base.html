@@ -24,6 +24,7 @@
                 <li><a href="{% url 'top_movies' %}">Top Movies</a></li>
                 <li><a href="{% url 'coming_soon' %}">Coming Soon</a></li>
                 {% if user.is_authenticated %}
+                <li><a href="{% url 'FavoritesList' %}">Favorites List</a></li>
                 <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
