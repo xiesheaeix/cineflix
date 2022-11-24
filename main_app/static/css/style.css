@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+/* body {
+    background-color: #23292E;
+} */
+body {
+    background: rgb(35,41,46);
+    background: linear-gradient(90deg, rgba(35,41,46,1) 10%, rgba(56,68,87,1) 40%, rgba(56,68,87,1) 60%, rgba(35,41,46,1) 90%);
+}
+
 button[type="submit"] { 
     position: absolute;
     top: 20px;
@@ -16,7 +24,7 @@ button[type="submit"] {
 
 section {
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     margin-top: 6rem;
 }
   
