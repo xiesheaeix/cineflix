@@ -7,31 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinéflix</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li>
-                <form action="{% url 'search' %}" method="GET">
-                    <input type="text" name="all" required="true">
-                    <button type="submit" value="Search">Search</button>
+        <ul class="menu-bar">
+            <li name="search"><a href="{% url 'home' %}"><span class="cineflix">Cinéflix</span></a></li>
+            <li name="search">
+                <form action="{% url 'search' %}" method="GET" name="search">
+                    <input type="text" name="all" placeholder="search..." required="true" class="search-field">
                 </form> 
             </li>
-            <div class="nav-right">
-                <li><a href="{% url 'top_movies' %}">Top Movies</a></li>
-                <li><a href="{% url 'coming_soon' %}">Coming Soon</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'FavoritesList' %}">Favorites List</a></li>
-                <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
-                {% else %}
-                <li><a href="{% url 'login' %}">Log In</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            </div>
+            <li name="nav"><a href="{% url 'top_movies' %}">Top Movies</a></li>
+            <li name="nav"><a href="{% url 'coming_soon' %}">Coming Soon</a></li>
+            {% if user.is_authenticated %}
+            <li name="nav"><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li name="nav"><a href="{% url 'login' %}">Log In</a></li>
             {% endif %}
+            <li name="nav"><a href="{% url 'signup' %}">Sign Up</a></li>
         </ul>
     </nav>
     {% block content %}

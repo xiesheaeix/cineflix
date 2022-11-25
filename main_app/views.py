@@ -35,10 +35,8 @@ def search(request):
 def top_movies(request):
     response = requests.get('https://imdb-api.com/en/API/Top250Movies/k_54v7k1ut').json()
     items = response['items']
-    # item_count = 0
+
     for item in items:
-        # item_count += 1
-        # while item_count <= 50:
         movie_data = Movie(
             imdbId = item['id'],
             title = item['title'],
@@ -53,8 +51,6 @@ def top_movies(request):
             movie_data.save()
 
     return render(request, 'top_movies.html', {'all_top_movies': items})
-        # else:
-        #     break
 
 def coming_soon(request):
     response = requests.get('https://imdb-api.com/en/API/ComingSoon/k_54v7k1ut').json()

@@ -3,11 +3,12 @@
 
 <h1>Top Movies</h1>
 
-{% for item in all_top_movies %}
-<a href="{% url 'details' item.id %}">
-    {{ item.title }}
-    <img src="{{ item.image }}" alt="" style="height: 200px; width: 100px;">
+<div class="top-movies">
+    {% for item in all_top_movies|slice:":50" %}
+        {% if item.image %}
+            <img src="{{ item.image }}">
+        {% endif %}
     {% endfor %}
-</a>
+</div>
 
 {% endblock %}
