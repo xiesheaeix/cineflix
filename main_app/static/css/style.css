@@ -1,23 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
-/* body {
-    background-color: #23292E;
-} */
 body {
     background: rgb(35,41,46);
     background: linear-gradient(90deg, rgba(35,41,46,1) 10%, rgba(56,68,87,1) 40%, rgba(56,68,87,1) 60%, rgba(35,41,46,1) 90%);
 }
 
-button[type="submit"] { 
-    position: absolute;
-    top: 20px;
+h1, li {
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
 }
 
-.nav-right {
+ul, li {
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 25px;
+    padding: 40px;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    text-align: center;
+}
+
+/* navigation */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-bar {
+    border-radius: 25px;
+    height: fit-content;
+    display: inline-flex;
+    background-color: rgba(0, 0, 0, .25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    padding: 0 10px;
+    margin: 50px 0 0 0;
+    box-shadow: 1px 3px 7px 2px rgba(0, 0, 0, 0.4);
+}
+
+.menu-bar li {
+    font-size: 11px;
+    font-weight: 400;
+    padding: 12px 10px;
+    margin: 0 8px;
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menu-bar li[name="nav"]::before {
+    content: " ";
     position: absolute;
-    left: 30rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    transition: 0.2s;
+    border-radius: 25px;
+}
+
+.menu-bar li[name="nav"]:hover::before {
+    background: linear-gradient(to bottom, #e8edec, #d2d1d3);
+    transform: scale(1.1);
+    opacity: 25%;
+}
+
+.cineflix {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+/* search bar */
+
+form[name="search"] {
+    opacity: 20%;
+}
+
+.search-field {
+    border: none;
+    border-radius: 25px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 10px;
+    padding: 8px;
 }
 
 /* home carousel */
@@ -25,7 +105,7 @@ button[type="submit"] {
 section {
     width: 100%;
     overflow-x: hidden;
-    margin-top: 6rem;
+    margin-top: 11rem;
 }
   
 .carousel-one, .carousel-two {
@@ -136,6 +216,25 @@ input[type="radio"] {
     object-fit: cover;
     border-radius: 7px;
     height: 100%;
+}
+
+/* top movies / coming soon */
+
+
+.top-movies, .coming-soon, .search {
+    display: grid;
+    grid-template-columns: repeat(5, 140px);
+    row-gap: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-movies img, .coming-soon img, .search img {
+    width: 120px;
+    height: 170px;
+    border-radius: 6px;
+    box-shadow: 1px 3px 7px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* amimations */

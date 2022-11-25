@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Movies Coming Soon</h1>
+<h1>Coming Soon</h1>
 
-{% for item in all_coming_soon %}
-<a href="{% url 'details' item.id %}">
-    {{ item.title }}
-    <img src="{{ item.image }}" alt="" style="height: 200px; width: 100px;">
+<div class="coming-soon">
+    {% for item in all_coming_soon|slice:":20" %}
+        <img src="{{ item.image }}">
     {% endfor %}
-</a>
+</div>
 
 {% endblock %}

@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% for result in results %}
-{% if result.image %}
-{{ result.title }}
-<img src="{{ result.image }}" alt="" style="height:200px; width:100px;">
-{% else %}
+<h1>Search Results</h1>
 
-{% endif %}
-{% endfor %}
+<div class="search">
+    {% for result in results|slice:":5" %}
+    {% if result.image %}
+    <img src="{{ result.image }}">
+    {% else %}
+
+    {% endif %}
+    {% endfor %}
+</div>
 
 {% endblock %}
