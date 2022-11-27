@@ -21,11 +21,12 @@
             <li name="nav"><a href="{% url 'top_movies' %}">Top Movies</a></li>
             <li name="nav"><a href="{% url 'coming_soon' %}">Coming Soon</a></li>
             {% if user.is_authenticated %}
+            <li name="nav"><a href="{% url 'profile' %}">Profile</a></li>
             <li name="nav"><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li name="nav"><a href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
             <li name="nav"><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
         </ul>
     </nav>
     {% block content %}
