@@ -5,8 +5,10 @@
 
 <div class="coming-soon">
     {% for item in all_coming_soon|slice:":20" %}
+    <a href="{% url 'details' item.id %}">
         <img src="{{ item.image }}">
     {% endfor %}
+    </a>
 </div>
 
 {% endblock %}

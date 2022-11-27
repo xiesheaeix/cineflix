@@ -5,10 +5,12 @@
 
 <div class="search">
     {% for result in results|slice:":5" %}
-    {% if result.image %}
-    <img src="{{ result.image }}">
-    {% else %}
-
+    {% if result.image != 'https://imdb-api.com/images/original/nopicture.jpg' %}
+        <a href="{% url 'details' result.id %}">
+            {% if result.image %}
+                <img src="{{ result.image }}">
+            {% endif %}
+        </a>
     {% endif %}
     {% endfor %}
 </div>

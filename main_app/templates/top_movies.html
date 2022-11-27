@@ -5,9 +5,11 @@
 
 <div class="top-movies">
     {% for item in all_top_movies|slice:":50" %}
+    <a href="{% url 'details' item.id %}">
         {% if item.image %}
             <img src="{{ item.image }}">
         {% endif %}
+    </a>
     {% endfor %}
 </div>
 
