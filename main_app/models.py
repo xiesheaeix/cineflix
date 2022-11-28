@@ -33,6 +33,8 @@ class Movie(models.Model):
     year = models.CharField(max_length=100)
     image = models.CharField(max_length=250)
     genres = models.CharField(max_length=200, null=True)
+    awards = models.CharField(max_length=300, null=True)
+    trailer = models.CharField(max_length=300, null=True)
     favorites = models.ManyToManyField(Favorites)
     rating = models.IntegerField(
         # choices=RATINGS,
@@ -41,6 +43,27 @@ class Movie(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.id})'
+
+
+class Review(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+    movie = models.ForeignKey(
+        Movie, 
+        on_delete=models.CASCADE
+    )
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True) 
+
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk': self.id})
+
+    def __str__(self):
+        return f'Review for: {self.movie} ({self.id})'
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
