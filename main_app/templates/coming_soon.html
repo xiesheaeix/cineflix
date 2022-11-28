@@ -4,7 +4,7 @@
 <h1>Coming Soon</h1>
 
 <div class="coming-soon">
-    {% for item in all_coming_soon|slice:":20" %}
+    {% for item in all_coming_soon %}
     <a href="{% url 'details' item.id %}">
         <img src="{{ item.image }}">
     {% endfor %}
