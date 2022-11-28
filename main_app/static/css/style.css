@@ -10,7 +10,7 @@ body {
     background: linear-gradient(90deg, rgba(35,41,46,1) 10%, rgba(56,68,87,1) 40%, rgba(56,68,87,1) 60%, rgba(35,41,46,1) 90%);
 }
 
-h1, li {
+h1, li, p {
     color: white;
     font-family: 'Comfortaa', sans-serif;
 }
@@ -235,6 +235,77 @@ input[type="radio"] {
     height: 170px;
     border-radius: 6px;
     box-shadow: 1px 3px 7px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* movie details  */
+
+.movie-card {
+    width: 1000px;
+    height: 600px;
+    margin: 10vmin auto;
+    border-radius: 15px;
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+}
+
+.card-left {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 40%;
+    height: 600px;
+    float: left;
+    overflow: hidden;
+    border-radius: 15px 0 0 15px;
+}
+
+.card-left img {
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+}
+
+.card-right {
+    width: 60%;
+    float: left;
+    background: black;
+    height: 600px;
+    border-radius: 0 15px 15px 0;
+}
+
+.card-right h1 {
+    font-weight: 700;
+    text-align: left;
+    font-size: 40px;
+    margin: 30px 0 0 0;
+    padding: 0 0 0 40px;
+    letter-spacing: 5px;
+}
+
+.movie-details ul {
+    list-style-type: none;
+    padding: 0 0 0 40px;
+    margin: 10px 0 0 0;
+}
+
+.movie-details ul li {
+    display: inline;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 50px 0 0;
+}
+
+.plot p {
+    color: white;
+    font-size: 12px;
+    padding: 0 40px 0 40px;
+    letter-spacing: 1px;
+    margin: 20px 0 -10px 0;
+    line-height: 20px;
+}
+
+iframe {
+    margin-left: 60px;
+    width: 480px;
+    height: 260px;
 }
 
 /* amimations */
