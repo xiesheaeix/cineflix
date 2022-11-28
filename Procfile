@@ -1,0 +1,1 @@
+web: gunicorn cineflix.wsgi
