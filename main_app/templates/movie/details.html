@@ -1,20 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ response.title }}</h1>
-<p>Year Released: {{ response.year }}</p>
-<img src="{{ response.image }}" alt="pic" style="height:200px; width:140px;">
-<p>Plot: {{ response.plot }}</p>
-<p>Awards: {{ response.awards }}</p>
-<p>Genres: {{ response.genres }}</p>
-<p>Content Rating:  {{ response.contentRating }}</p>
 
-<h3>Trailer</h3>
-<iframe src="{{ vid_response.linkEmbed }}?autoplay=false&width=640" width="640" height="360" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
+<div class="movie-card">
+    <div class="card-left">
+        <img src="{{ response.image }}">
+    </div>
+    <div class="card-right">
+      <h1>{{ response.title }}</h1>
+      <div class="movie-details">
+        <ul>
+          <li>{{ response.year }}</li>
+          <li>{{ response.duration }}</li>
+          <li>{{ response.genres }}</li>
+        </ul>
+        <div class="plot">
+          <p>{{ response.plot }}</p>
+        </div>
+        <h3>Trailer</h3>
+            <iframe src="{{ vid_response.linkEmbed }}?width=480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
+      </div>
+    </div>
+  </div>
 
-<h3>Similar Movies</h3>
+  <h3>Similar Movies</h3>
 {% for items in response.similars %}
 <a href="{% url 'details' items.id %}">
-    {{ items.title }}
     <img src="{{ items.image }}" alt=""style="height:100px; width:80px;">
     {% endfor %}
 </a>
@@ -25,4 +35,5 @@
     <p>{{ items.asCharacter }}</p>
     <img src="{{ items.image }}" alt=""style="height:100px; width:80px;">
     {% endfor %}
+
 {% endblock %}
