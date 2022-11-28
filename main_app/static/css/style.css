@@ -308,6 +308,46 @@ iframe {
     height: 260px;
 }
 
+/* movie details (similar movies) */
+
+.extra-details {
+    display: grid;
+    grid-template-columns: repeat(7, 150px);
+    justify-content: center;
+    align-items: center;
+}
+
+.extra-details img {
+    height: 175px;
+    width: auto;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 3px 7px 2px rgba(0, 0, 0, 0.5);
+}
+
+.extra-details img:hover {
+    scale: calc(1.1);
+    transition: .5s ease-in-out;
+}
+
+/* movie details (actors) */
+
+.actor {
+    text-align: center;
+}
+
+.actor img {
+    height: 100px;
+    width: 80px;
+    margin: 20px;
+    box-shadow: 1px 3px 7px 2px rgba(0, 0, 0, 0.5);
+}
+
+.smaller {
+    font-size: 12px;
+    font-style: italic;
+}
+
 /* amimations */
   
 @keyframes scrolling {

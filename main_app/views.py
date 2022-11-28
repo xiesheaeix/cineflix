@@ -80,8 +80,8 @@ def coming_soon(request):
 
 
 def movie_details(request, movie_id):
-    # response = requests.get(f'https://imdb-api.com/en/API/Title/k_54v7k1ut/{movie_id}').json()
-    # vid_response = requests.get(f'https://imdb-api.com/API/Trailer/k_54v7k1ut/{movie_id}').json()
+    response = requests.get(f'https://imdb-api.com/en/API/Title/k_54v7k1ut/{movie_id}').json()
+    vid_response = requests.get(f'https://imdb-api.com/API/Trailer/k_54v7k1ut/{movie_id}').json()
     # movie_data = Movie(
     #         imdbId = response['id'],
     #         title = response['title'],
@@ -98,7 +98,7 @@ def movie_details(request, movie_id):
     #     movie_data.save()
     movie = Movie.objects.get(imdbId=movie_id)
     review_form = ReviewForm()
-    return render(request, 'movie/details.html', {'review_form': review_form, 'movie_data': movie})
+    return render(request, 'movie/details.html', {'review_form': review_form, 'movie_data': movie, 'response': response, 'vid_response': vid_response})
 
 @login_required
 def add_review(request, movie_id):
