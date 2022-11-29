@@ -12,6 +12,27 @@
         <a class="profile-link" href="{% url 'create_profile' %}">Create Profile</a>
         {% endif %}
     </div>
+    <h2>Users favorites: </h2> 
+    {% for movie in user.profile.movie.all %}
+    <a href="{% url 'details' movie.imdbId %}">
+        <img src="{{ movie.image }}" alt="" style="height:200px; width:120px;">
+    </a>
+    <form action="{% url 'unassoc_favorites' user.profile.id movie.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn">Remove movie</button>
+    </form>
+    {% endfor %}
+
+    <h2>Users reviews: </h2>
+    {% for review in user.review_set.all %}
+    <a href="{% url 'details' review.movie.imdbId %}">
+        <img src="{{ review.movie.image }}" alt="" style="height:200px; width:120px;"><br>
+        {{ review.movie.title }}<br>
+    </a>
+    {{ review.rating }} /10 <br>
+    {{ review.body }}<br>
+    {% endfor %}
+
     <div class="favorites">
         <h2>Favorites</h2>
         <div class="favorites_container">
