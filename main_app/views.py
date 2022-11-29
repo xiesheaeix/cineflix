@@ -116,6 +116,12 @@ def add_review(request, movie_id):
         new_review.save()
     return redirect('details', movie_id=movie.imdbId)
 
+class DeleteReview(LoginRequiredMixin, DeleteView):
+    model = Review
+    def get_success_url(self):
+        return f"/movie/{ self.object.movie.imdbId }"
+
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':

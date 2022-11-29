@@ -52,6 +52,7 @@
 </form>
 
 {% for review in movie_data.review_set.all %}
+<a href="{% url 'delete_review' movie_data.id review.id %}">X</a>
 {{ review.body }}
 {% endfor %}
 
