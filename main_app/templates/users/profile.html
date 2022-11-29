@@ -12,52 +12,32 @@
         <a class="profile-link" href="{% url 'create_profile' %}">Create Profile</a>
         {% endif %}
     </div>
-    <h2>Users favorites: </h2> 
-    {% for movie in user.profile.movie.all %}
-    <a href="{% url 'details' movie.imdbId %}">
-        <img src="{{ movie.image }}" alt="" style="height:200px; width:120px;">
-    </a>
-    <form action="{% url 'unassoc_favorites' user.profile.id movie.id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn">&#x1F5D1;</button>
-    </form>
-    {% endfor %}
 
-    <h2>Users reviews: </h2>
-    {% for review in user.review_set.all %}
-    <a href="{% url 'details' review.movie.imdbId %}">
-        <img src="{{ review.movie.image }}" alt="" style="height:200px; width:120px;"><br>
-        {{ review.movie.title }}<br>
-    </a>
-    {{ review.rating }} /5 <br>
-    {{ review.body }}<br>
-    {% endfor %}
-
-    <div class="favorites">
-        <h2>Favorites</h2>
-        <div class="favorites_container">
-            <input type="radio" id="img-1" name="images" value="img-1" checked>
-            <input type="radio" id="img-2" name="images" value="img-2">
-            <input type="radio" id="img-3" name="images" value="img-3">
-            <input type="radio" id="img-4" name="images" value="img-4">
-            <input type="radio" id="img-5" name="images" value="img-5">
-            <label class="favorites_img-container" for="img-1" id="img-1">
-                <img class="favorites_img" src="https://i.imgur.com/RgggiWF.jpg">
-            </label>
-            <label class="favorites_img-container" for="img-2" id="img-2">
-                <img class="favorites_img" src="https://i.imgur.com/Kv1MURg.jpg">
-            </label>
-            <label class="favorites_img-container" for="img-3" id="img-3">
-                <img class="favorites_img" src="https://i.imgur.com/4eAYAmM.jpg">
-            </label>
-            <label class="favorites_img-container" for="img-4" id="img-4">
-                <img class="favorites_img" src="https://i.imgur.com/HOBm7I9.jpg">
-            </label>
-            <label class="favorites_img-container" for="img-5" id="img-5">
-                <img class="favorites_img" src="https://i.imgur.com/kqaHegp.jpg">
-            </label>
-        </div>
+    <h2>{{user.username}}'s Favorites:</h2>
+    <div class="profile-movies-container">
+        {% for movie in user.profile.movie.all|slice:"5" %}
+            <div class="favorite-movies">
+                <a href="{% url 'details' movie.imdbId %}">
+                    <img id="favorite-movies" src="{{ movie.image }}">
+                </a>
+                <form action="{% url 'unassoc_favorites' user.profile.id movie.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="favorite-delete" type="submit">&#x1F5D1;</button>
+                </form>
+            </div>
+        {% endfor %}
     </div>
-</div>
+
+    <h2>{{user.username}}'s Reviews:</h2>
+    <div class="profile-movies-container">
+        {% for review in user.review_set.all|slice:"5" %}
+            <div class="reviewed-movies">
+                <a href="{% url 'details' review.movie.imdbId %}">
+                    <img id="reviewed-movies" src="{{ review.movie.image }}"><br>
+                </a>
+                <p class="rating">{{ review.rating }}/5</p><br>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock content %}
