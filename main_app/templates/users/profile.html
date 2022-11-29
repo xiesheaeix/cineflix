@@ -19,7 +19,7 @@
     </a>
     <form action="{% url 'unassoc_favorites' user.profile.id movie.id %}" method="POST">
         {% csrf_token %}
-        <button type="submit" class="btn">Remove movie</button>
+        <button type="submit" class="btn">&#x1F5D1;</button>
     </form>
     {% endfor %}
 
@@ -29,7 +29,7 @@
         <img src="{{ review.movie.image }}" alt="" style="height:200px; width:120px;"><br>
         {{ review.movie.title }}<br>
     </a>
-    {{ review.rating }} /10 <br>
+    {{ review.rating }} /5 <br>
     {{ review.body }}<br>
     {% endfor %}
 

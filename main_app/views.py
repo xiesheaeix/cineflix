@@ -129,7 +129,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/')
+            return redirect('/create_profile')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()
@@ -143,6 +143,7 @@ def profile(request):
 class CreateProfile(LoginRequiredMixin, CreateView):
     model = Profile
     fields = ['avatar', 'bio']
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
