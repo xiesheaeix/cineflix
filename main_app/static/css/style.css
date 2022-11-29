@@ -300,6 +300,65 @@ iframe {
     font-style: italic;
 }
 
+
+/* movie details reviews */
+
+.comment-card {
+    width: 100vmin;
+    margin: 1vmin auto;
+    padding: 10px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55); 
+    background-image: url('https://wallpaperaccess.com/full/862213.jpg');
+    font-family: 'Comfortaa', sans-serif;
+}
+.comment-card ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comment-info {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-form {
+    width: 100vmin;
+    margin: 1vmin auto;
+    padding: 5px 15px;
+    border-radius: 15px;
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55); 
+    background-image: url('https://wallpaperaccess.com/full/862213.jpg');
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.comment-form p {
+    color: rgba(0, 0, 0, 0);
+}
+
+.comment-form select {
+    width: 100%;
+    padding:10px;
+    border-radius:10px;
+  }
+
+.comment-form input[type=text] {
+    width: 100%;
+    padding:10px;
+    border-radius:10px;
+}
+
+.comment-form input[type=button] {
+    padding: 8px;
+    border-radius: 10px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.review-box {
+    width: 250px;
+}
+
 /* profile */
 
 .profile-card {
