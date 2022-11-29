@@ -67,7 +67,7 @@ class Review(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.CharField(max_length=200, default='https://i.imgur.com/ANkr9YN.png')
+    avatar = models.CharField(max_length=200, default='https://i.imgur.com/1t8xewY.png')
     bio = models.TextField()
 
     def __str__(self):

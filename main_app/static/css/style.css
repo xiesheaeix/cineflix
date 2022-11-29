@@ -10,7 +10,7 @@ body {
     background: linear-gradient(90deg, rgba(35,41,46,1) 10%, rgba(56,68,87,1) 40%, rgba(56,68,87,1) 60%, rgba(35,41,46,1) 90%);
 }
 
-h1, li, p {
+h1, h2, li, p, a {
     color: white;
     font-family: 'Comfortaa', sans-serif;
 }
@@ -346,6 +346,63 @@ iframe {
 .smaller {
     font-size: 12px;
     font-style: italic;
+}
+
+/* profile */
+
+.profile-card {
+    background-color: grey;
+    background-image: url('https://wallpaperaccess.com/full/862213.jpg');
+    background-size:cover;
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 800px;
+    height: 700px;
+    margin: 12vmin auto;
+    border-radius: 25px;
+}
+
+#avatar {
+    margin-top: -275px;
+    background-color: black;
+    height: 150px;
+    border-radius: 50%;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+}
+  
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-text h1 {
+    margin-top: -10px;
+}
+
+.bio {
+    margin-top: -25px;
+    font-size: 12px;
+    width: 70%;
+}
+
+.profile-link {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 50px;
+    margin-bottom: -20px;
 }
 
 /* amimations */
