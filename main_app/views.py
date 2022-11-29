@@ -35,34 +35,14 @@ def search(request):
 
 def top_movies(request):
     response = requests.get('https://imdb-api.com/en/API/Top250Movies/k_54v7k1ut').json()
-    items = response['items']
+    items = response['items'][:50]
 
-    for item in items:
-        movie_data = Movie(
-            imdbId = item['id'],
-            title = item['title'],
-            year = item['year'],
-            image = item['image'],
-            # rating = item['rating']
-        )
-        try: 
-            if Movie.objects.get(imdbId=item['id']):
-                pass
-        except:
-            movie_data.save()
-
-    return render(request, 'top_movies.html', {'all_top_movies': items})
-
-def coming_soon(request):
-    response = requests.get('https://imdb-api.com/en/API/ComingSoon/k_54v7k1ut').json()
-    items = response['items'][0:10]
-    
     for item in items:
         try: 
             if not Movie.objects.get(imdbId=item['id']):
                 imdbId = item['id']
                 # response = requests.get(f'https://imdb-api.com/en/API/Title/k_54v7k1ut/{imdbId}').json()
-                vid_response = requests.get(f'https://imdb-api.com/API/Trailer/k_54v7k1ut/{imdbId}').json()
+                # vid_response = requests.get(f'https://imdb-api.com/API/Trailer/k_54v7k1ut/{imdbId}').json()
                 movie_data = Movie(
                     imdbId = item['id'],
                     title = item['title'],
@@ -70,7 +50,32 @@ def coming_soon(request):
                     image = item['image'],
                     genres = item['genres'],
                     # awards = response['awards'],
-                    trailer = vid_response['linkEmbed'],
+                    # trailer = vid_response['linkEmbed'],
+                )
+                movie_data.save()
+        except Exception as e:
+            print('error', e)
+
+    return render(request, 'top_movies.html', {'all_top_movies': items})
+
+def coming_soon(request):
+    response = requests.get('https://imdb-api.com/en/API/ComingSoon/k_54v7k1ut').json()
+    items = response['items'][:15]
+    
+    for item in items:
+        try: 
+            if not Movie.objects.get(imdbId=item['id']):
+                imdbId = item['id']
+                # response = requests.get(f'https://imdb-api.com/en/API/Title/k_54v7k1ut/{imdbId}').json()
+                # vid_response = requests.get(f'https://imdb-api.com/API/Trailer/k_54v7k1ut/{imdbId}').json()
+                movie_data = Movie(
+                    imdbId = item['id'],
+                    title = item['title'],
+                    year = item['year'],
+                    image = item['image'],
+                    genres = item['genres'],
+                    # awards = response['awards'],
+                    # trailer = vid_response['linkEmbed'],
                 )
                 movie_data.save()
         except Exception as e:
@@ -82,20 +87,20 @@ def coming_soon(request):
 def movie_details(request, movie_id):
     response = requests.get(f'https://imdb-api.com/en/API/Title/k_54v7k1ut/{movie_id}').json()
     vid_response = requests.get(f'https://imdb-api.com/API/Trailer/k_54v7k1ut/{movie_id}').json()
-    # movie_data = Movie(
-    #         imdbId = response['id'],
-    #         title = response['title'],
-    #         year = response['year'],
-    #         image = response['image'],
-    #         genres = response['genres'],
-    #         awards = response['awards'],
-    #         trailer = vid_response['linkEmbed'],
-    #     )
-    # try: 
-    #     if Movie.objects.get(imdbId=movie_id):
-    #         pass
-    # except:
-    #     movie_data.save()
+    movie_data = Movie(
+            imdbId = response['id'],
+            title = response['title'],
+            year = response['year'],
+            image = response['image'],
+            genres = response['genres'],
+            # awards = response['awards'],
+            trailer = vid_response['linkEmbed'],
+        )
+    try: 
+        if Movie.objects.get(imdbId=movie_id):
+            pass
+    except:
+        movie_data.save()
     movie = Movie.objects.get(imdbId=movie_id)
     review_form = ReviewForm()
     return render(request, 'movie/details.html', {'review_form': review_form, 'movie_data': movie, 'response': response, 'vid_response': vid_response})
