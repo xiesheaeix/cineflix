@@ -17,12 +17,15 @@
       {% endif %}
       <div class="movie-details">
         <ul>
-          <li>{{ movie_data.year }}</li>
-          <!-- <li>{{ response.duration }}</li> -->
-          <li>{{ movie_data.genres }}</li>
+          <li>{{ response.year }}</li>
+          {% if response.runtimeStr %}
+          <li>{{ response.runtimeStr }}</li>
+          {% else %}
+          {% endif %}
+          <li>{{ response.genres }}</li>
         </ul>
         <div class="plot">
-          <!-- <p>{{ response.plot }}</p> -->
+          <p>{{ response.plot }}</p>
         </div>
         <h3>Trailer</h3>
             <iframe src="{{ vid_response.linkEmbed }}?width=480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
@@ -65,7 +68,7 @@
     {{ review.rating }}/5 ⭐️'s <br>
     {{ review.created }}
     {% if review.user == request.user %}
-        <a href="{% url 'delete_review' movie_data.id review.id %}">X</a>
+        <a href="{% url 'delete_review' movie_data.id review.id %}">&#x1F5D1;</a>
     {% endif %}
 {% endfor %}
 
