@@ -13,9 +13,6 @@ urlpatterns = [
     path('movie/<movie_id>/', views.movie_details, name='details'),
     path('movie/<movie_id>/add_review/', views.add_review, name='add_review'),
     path('movie/<movie_id>/delete_review/<int:pk>/', views.DeleteReview.as_view(), name='delete_review'),
-    path('profile/<int:profile_id>/assoc_favorites/<int:favorites_id>/', views.assoc_favorites, name='assoc_favorites'),
-    path('profile/<int:profile_id>/unassoc_favorites/<int:favorites_id>/', views.unassoc_favorites, name='unassoc_favorites'),
-    path('favorites/', views.FavoritesList.as_view(), name='FavoritesList'),
-    path('favorites/create/', views.FavoritesCreate.as_view(), name='FavoritesCreate'),
-    path('favorites/<int:pk>/delete/', views.FavoritesDelete.as_view(), name='FavoritesDelete'),
+    path('profile/<int:profile_id>/assoc_favorites/<int:movie_id>/', views.assoc_favorites, name='assoc_favorites'),
+    path('profile/<int:profile_id>/unassoc_favorites/<int:movie_id>/', views.unassoc_favorites, name='unassoc_favorites'),
 ]

@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Profile, Favorites, Review
+from .models import Profile, Review
 from .forms import ReviewForm
 
 
@@ -152,27 +152,16 @@ class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = ['avatar', 'bio']
     success_url = '/profile'
-
-class FavoritesList(LoginRequiredMixin, ListView):
-    model = Favorites
-
-class FavoritesCreate(LoginRequiredMixin, CreateView):
-    model = FavoritesList
-    fields = ['imdbId', 'title', 'image']
-
-class FavoritesDelete(LoginRequiredMixin, DeleteView):
-    model = Favorites
-    success_url = '/profile'
     
 @login_required
-def assoc_favorites(request, profile_id, favorites_id):
-    Profile.objects.get(id=profile_id).favorites.add(favorites_id)
-    return redirect('profile', profile_id=profile_id)
+def assoc_favorites(request, profile_id, movie_id):
+    Profile.objects.get(id=profile_id).movie.add(movie_id)
+    return redirect('/profile', profile_id=request.user.id)
 
 @login_required
-def unassoc_favorites(request, profile_id, favorites_id):
-    Profile.objects.get(id=profile_id).favorites.remove(favorites_id)
-    return redirect('profile', profile_id=profile_id)
+def unassoc_favorites(request, profile_id, movie_id):
+    Profile.objects.get(id=profile_id).movie.remove(movie_id)
+    return redirect('/profile', profile_id=request.user.id)
 
 
 

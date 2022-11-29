@@ -7,6 +7,14 @@
     </div>
     <div class="card-right">
       <h1>{{ movie_data.title }}</h1>
+      {% if user.is_authenticated %}
+        <form action="{% url 'assoc_favorites' user.profile.id movie_data.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn">Add Favorite</button>
+        </form>
+      {% else %}
+        <a href="{% url 'signup' %}"><button>Add Favorite</button></a>
+      {% endif %}
       <div class="movie-details">
         <ul>
           <li>{{ movie_data.year }}</li>
@@ -51,9 +59,14 @@
     <input type="submit" class="btn" value="Add comment">
 </form>
 
-{% for review in movie_data.review_set.all %}
-<a href="{% url 'delete_review' movie_data.id review.id %}">X</a>
-{{ review.body }}
+{% for review in movie_data.review_set.all %}<br>
+    {{ review.user.username }}<br>
+    {{ review.body }}<br>
+    {{ review.rating }}/5 ⭐️'s <br>
+    {{ review.created }}
+    {% if review.user == request.user %}
+        <a href="{% url 'delete_review' movie_data.id review.id %}">X</a>
+    {% endif %}
 {% endfor %}
 
 
