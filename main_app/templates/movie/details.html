@@ -7,14 +7,6 @@
     </div>
     <div class="card-right">
       <h1>{{ movie_data.title }}</h1>
-      {% if user.is_authenticated %}
-        <form action="{% url 'assoc_favorites' user.profile.id movie_data.id %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn">Add Favorite</button>
-        </form>
-      {% else %}
-        <a href="{% url 'signup' %}"><button>Add Favorite</button></a>
-      {% endif %}
       <div class="movie-details">
         <ul>
           <li>{{ response.year }}</li>
@@ -23,6 +15,14 @@
           {% else %}
           {% endif %}
           <li>{{ response.genres }}</li>
+          {% if user.is_authenticated %}
+          <li><form action="{% url 'assoc_favorites' user.profile.id movie_data.id %}" method="POST"></li>
+            {% csrf_token %}
+            <button type="submit" class="btn">❤️ Add Favorite</button>
+          </form>
+      {% else %}
+        <a href="{% url 'signup' %}"><button class="favorite">❤️ Add Favorite</button></a>
+      {% endif %}
         </ul>
         <div class="plot">
           <p>{{ response.plot }}</p>
@@ -68,7 +68,7 @@
     {{ review.rating }}/5 ⭐️'s <br>
     {{ review.created }}
     {% if review.user == request.user %}
-        <a href="{% url 'delete_review' movie_data.id review.id %}">&#x1F5D1;</a>
+        <a class="delete" href="{% url 'delete_review' movie_data.id review.id %}">&#x1F5D1;</a>
     {% endif %}
 {% endfor %}
 
