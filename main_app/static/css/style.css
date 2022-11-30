@@ -474,6 +474,29 @@ h2 {
     font-weight: 700;
 }
 
+/* sign up */
+.sign_up {
+    background-color: grey;
+    background-image: url('https://wallpaperaccess.com/full/862213.jpg');
+    background-size:cover;
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 400px;
+    margin: 1vmin auto;
+    border-radius: 25px;
+}
+
+.div_tag {
+    font-family: 'comfortaa', sans-serif;
+    color: white;
+    font-size: 15px;
+    line-height: 28px;
+}
+
 /* amimations */
   
 @keyframes scrolling {
