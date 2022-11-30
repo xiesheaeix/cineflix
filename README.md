@@ -39,15 +39,15 @@ Cinéflix is a social media-based web application designed for bringing movie-lo
 <details>
     <summary>:gear: Functionality</summary>
         <h3 align="center">Home Page</h3>
-        <p align="center"><img src="public/images/screenshots/login.png" width="800"></p>
+        <p align="center"><img src="main_app/static/images/home-screenshot.png" width="800"></p>
         <h3 align="center">Top Movies</h3>
-        <p align="center"><img src="public/images/screenshots/home.png" width="800"></p>
+        <p align="center"><img src="main_app/static/images/topmovies-screenshot.png" width="800"></p>
         <h3 align="center">Coming Soon</h3>
-        <p align="center"><img src="public/images/screenshots/pokedex.png"width="800"></p>
+        <p align="center"><img src="main_app/static/images/comingsoon-screenshot.png"width="800"></p>
         <h3 align="center">Movie Details</h3>
-        <p align="center"><img src="public/images/screenshots/popup.png"width="800"></p>
+        <p align="center"><img src="main_app/static/images/details-screenshot.png"width="800"></p>
         <h3 align="center">Profile Page</h3>
-        <p align="center"><img src="public/images/screenshots/games.png"width="800"></p>
+        <p align="center"><img src="main_app/static/images/profile-screenshot.png"width="800"></p>
 </details>
 
 ## :computer: Technologies Used
