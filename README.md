@@ -10,10 +10,7 @@
 
 ##### Created by Studio 4
 
-![GitHub Badge](https://img.shields.io/badge/-alexehouston-lightgrey?style=for-the-badge&logo=github)
-![GitHub Badge](https://img.shields.io/badge/-xiesheaeix-lightgrey?style=for-the-badge&logo=github)
-![GitHub Badge](https://img.shields.io/badge/-xcbhx-lightgrey?style=for-the-badge&logo=github)
-![GitHub Badge](https://img.shields.io/badge/-caprtainx-lightgrey?style=for-the-badge&logo=github)
+<p align="center"><a href="https://github.com/alexehouston">alexehouston</a> | <a href="https://github.com/Caprtainx">Caprtainx</a> | <a href="https://github.com/xcbhx">xcbhx</a> | <a href="https://github.com/xiesheaeix">xiesheaeix</a></p>
 
 ## :pencil: Description
 
