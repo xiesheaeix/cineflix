@@ -27,7 +27,6 @@
         <div class="plot">
           <p>{{ response.plot }}</p>
         </div>
-        <h3>Trailer</h3>
             <iframe src="{{ vid_response.linkEmbed }}?width=480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
       </div>
     </div>
@@ -78,8 +77,8 @@
 <div class="comment-form">
     <form action="{% url 'add_review' movie_data.id %}" method="POST">
         {% csrf_token %}
-        <p class="review-box">{{ review_form.as_p }}</p>
-        <input type="submit" class="add_comment" value="Add comment">
+        {{ review_form.as_p }}
+        <input type="submit" value="⭐️ Add Review">
     </form>
 </div>
 

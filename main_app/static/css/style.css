@@ -14,15 +14,15 @@ body {
     animation-fill-mode: forwards;
 }
 
-h1, h2, li, p, a {
+h1, h2, h4, li, p, a, .div_tag {
     color: white;
 }
 
-li, p, a, button {
+li, p, a, button, h4, .search-field, textarea, input.add_comment, .div_tag, .btn, input#id_avatar, input {
     font-family: 'Comfortaa', sans-serif;
 }
 
-h1, h2 {
+h1, h2, .cineflix, label {
     font-family: 'Lexend Giga', sans-serif;
 }
 
@@ -38,12 +38,19 @@ a {
 h1 {
     font-size: 25px;
     padding: 40px;
-    text-transform: uppercase;
     letter-spacing: 20px;
     text-align: center;
 }
 
-button {
+h4 {
+    text-align: center;
+}
+
+h1, h2, .cineflix, .comment-card li, .profile-link, label {
+    text-transform: uppercase;
+}
+
+button, input.add_comment, input.btn, input {
     border-color: white;
     border-radius: 10px;
     font-size: 12px;
@@ -58,8 +65,28 @@ button:hover, .delete:hover {
     border: none;
 }
 
-form {
+form, form p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+.edit-form {
+    width: 700px;
+    margin: 1vmin auto;
+    padding: 5px 15px;
+    border-radius: 15px;
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55); 
+    background-image: url('https://wallpaperaccess.com/full/862213.jpg');
+    font-family: 'Comfortaa', sans-serif;
+}
+
+input#id_avatar {
+    width: 600px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 /* navigation */
@@ -125,9 +152,8 @@ form[name="search"] {
 .search-field {
     border: none;
     border-radius: 25px;
-    font-family: 'Comfortaa', sans-serif;
-    font-size: 10px;
-    padding: 8px;
+    font-size: 12px;
+    padding: 5px;
 }
 
 /* home carousel */
@@ -250,7 +276,7 @@ li img {
     font-size: 12px;
     padding: 0 40px 0 40px;
     letter-spacing: 1px;
-    margin: 20px 0 -25px 0;
+    margin: 30px auto;
     line-height: 20px;
 }
 
@@ -304,7 +330,7 @@ iframe {
 /* movie details reviews */
 
 .comment-card {
-    width: 100vmin;
+    width: 700px;
     margin: 1vmin auto;
     padding: 10px 30px;
     border-radius: 15px;
@@ -312,6 +338,11 @@ iframe {
     background-image: url('https://wallpaperaccess.com/full/862213.jpg');
     font-family: 'Comfortaa', sans-serif;
 }
+
+.comment-card li {
+    font-family: 'Lexend Giga', sans-serif;
+}
+
 .comment-card ul {
     display: flex;
     flex-direction: row;
@@ -321,10 +352,13 @@ iframe {
 .comment-info {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    color: white;
+    font-size: 13px;
 }
 
 .comment-form {
-    width: 100vmin;
+    width: 700px;
     margin: 1vmin auto;
     padding: 5px 15px;
     border-radius: 15px;
@@ -334,29 +368,24 @@ iframe {
 }
 
 .comment-form p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: rgba(0, 0, 0, 0);
 }
 
 .comment-form select {
-    width: 100%;
-    padding:10px;
-    border-radius:10px;
-  }
-
-.comment-form input[type=text] {
-    width: 100%;
+    margin: auto;
+    width: 400px;
     padding:10px;
     border-radius:10px;
 }
 
-.comment-form input[type=button] {
-    padding: 8px;
+textarea {
+    width: 600px;
     border-radius: 10px;
-    font-family: 'Comfortaa', sans-serif;
-}
-
-.review-box {
-    width: 250px;
+    padding: 10px;
 }
 
 /* profile */
@@ -405,13 +434,11 @@ iframe {
 
 .profile-link {
     font-size: 10px;
-    text-transform: uppercase;
 }
 
 h2 {
     font-size: 20px;
     text-align: center;
-    text-transform: uppercase;
     margin-top: 50px;
 }
 
@@ -475,6 +502,7 @@ h2 {
 }
 
 /* sign up */
+
 .sign_up {
     background-color: grey;
     background-image: url('https://wallpaperaccess.com/full/862213.jpg');
@@ -485,16 +513,33 @@ h2 {
     align-items: center;
     justify-content: center;
     width: 500px;
-    height: 400px;
+    height: 500px;
     margin: 1vmin auto;
     border-radius: 25px;
 }
 
 .div_tag {
-    font-family: 'comfortaa', sans-serif;
-    color: white;
-    font-size: 15px;
     line-height: 28px;
+}
+
+.helptext {
+    font-size: 10px;
+    width: 500px;
+    line-height: 15px;
+}
+
+.helptext ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input#id_username, input#id_password1, input#id_password2 {
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 25px auto;
 }
 
 /* amimations */
