@@ -246,15 +246,16 @@ li img {
     background: black;
     height: 600px;
     border-radius: 0 15px 15px 0;
+    overflow: auto;
 }
 
 .card-right h1 {
     font-weight: 700;
     text-align: left;
-    font-size: 4.9vw;
+    font-size: 4vw;
     margin: 30px 0 0 0;
     padding: 0 0 0 40px;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
 }
 
 .movie-details ul {
@@ -282,8 +283,8 @@ li img {
 
 iframe {
     margin-left: 60px;
-    width: 480px;
-    height: 260px;
+    width: 600px;
+    height: 280px;
 }
 
 /* movie details (similar movies) */
